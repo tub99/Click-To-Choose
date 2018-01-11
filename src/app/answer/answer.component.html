@@ -1,5 +1,5 @@
 <li class="option">
   <label>
-    <input id="{{option.id}}" type="button" value="{{option.optName}}"/>
+    <input id="{{option.id}}" type="button" value="{{option.optName}}" (click)="isCorrect($event, option)"/>
   </label>
 </li>

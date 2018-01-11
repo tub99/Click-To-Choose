@@ -12,8 +12,7 @@ import { config } from './../config/config';
   styleUrls: ['./assignment.component.scss']
 })
 export class AssignmentComponent implements OnInit {
-  @Output()
-  isOptionClicked: EventEmitter<String> = new EventEmitter<String>();
+
   assignmentData: Assignment = new Assignment(null);
   assignmentName: string;
   assignmentQuestions: Array<Question>;
@@ -34,8 +33,8 @@ export class AssignmentComponent implements OnInit {
         alert(err);
       });
   }
-  isOptionCorrect(){
-    this.isOptionClicked.emit();
+  isOptionClicked(option) {
+    alert(option.isCorrect === true)
   }
 
 }

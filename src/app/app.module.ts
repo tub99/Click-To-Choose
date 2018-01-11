@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { QuestionComponent } from './question/question.component';
 import { AnswerComponent } from './answer/answer.component';
 import { AssignmentComponent } from './assignment/assignment.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { AssignmentComponent } from './assignment/assignment.component';
     AppComponent,
     QuestionComponent,
     AnswerComponent,
-    AssignmentComponent
+    AssignmentComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
