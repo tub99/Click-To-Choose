@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input,  Renderer2, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-answer',
@@ -6,12 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./answer.component.scss']
 })
 export class AnswerComponent implements OnInit {
-  answer: string;
-  constructor() { }
+   @Input() option: string;
+  constructor(private renderer: Renderer2, private el: ElementRef) { }
 
   ngOnInit() {
-    // get the answers array populated
-    this.answer = 'hi';
+  }
+
+  ngOnChanges(changes) {
+    this.option = changes.currQuestion.option;
   }
 
 }
