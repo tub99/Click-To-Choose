@@ -3,7 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter, Renderer2, ElementRef }
 @Component({
   selector: 'app-answer',
   templateUrl: './answer.component.html',
-  styleUrls: ['./answer.component.scss']
+  styleUrls: ['./answer.component.css']
 })
 export class AnswerComponent implements OnInit {
   @Input() option: string;

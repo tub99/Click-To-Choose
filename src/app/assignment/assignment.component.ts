@@ -9,7 +9,7 @@ import { config } from './../config/config';
   selector: 'app-assignment',
   providers: [AssignmentService],
   templateUrl: './assignment.component.html',
-  styleUrls: ['./assignment.component.scss']
+  styleUrls: ['./assignment.component.css']
 })
 export class AssignmentComponent implements OnInit {
 
