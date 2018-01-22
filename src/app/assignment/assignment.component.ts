@@ -21,10 +21,18 @@ export class AssignmentComponent implements OnInit {
   isFirstQuestion: Boolean = true;
   isLastQuestion: Boolean = false;
   options:Array<Option>;
+  hasOptionBeenClicked: Boolean = false;
 
-  constructor(private assignemntSvc: AssignmentService, private  renderer: Renderer2, private el: ElementRef) { }
+  constructor(private assignemntSvc: AssignmentService, private  renderer: Renderer2, private el: ElementRef) {
+    console.log('constructor fired');
+  }
+
+  ngOnChanges() {
+    console.log('Changes fired');
+  }
 
   ngOnInit() {
+     console.log('On Init');
     this.assignemntSvc.getAssignmentAccToType(config.DATA.URl, config.ASSIGNMENT_TYPE.SUBJECT_PREDICATE)
       .subscribe(data => {
         this.assignmentData = data;
@@ -38,9 +46,7 @@ export class AssignmentComponent implements OnInit {
       });
   }
   isOptionClicked(option) {
-    alert(option.isCorrect === true);
-    this.renderer.addClass(this.el.nativeElement, 'correct-answer');
-
+    this.hasOptionBeenClicked = true;
   }
 
   onNextQuestionClick() {
@@ -49,6 +55,7 @@ export class AssignmentComponent implements OnInit {
       this.currentQuestion = this.assignmentData.questions[++this.currentQuestionIndex];
       this.isLastQuestion = (this.currentQuestionIndex === this.assignmentQuestions.length - 1) ? true : false;
     }
+     this.hasOptionBeenClicked = false;
   }
   onPrevQuestionClick() {
     if (this.currentQuestionIndex > 0) {

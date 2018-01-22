@@ -10,6 +10,7 @@ import { AssignmentComponent } from './assignment/assignment.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ValidatorComponent } from './validator/validator.component';
 import {EventManager} from './services/eventManager/eventManager.service';
+import { QuestionMarkerDirective } from './directives/question-marker.directive';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {EventManager} from './services/eventManager/eventManager.service';
     AnswerComponent,
     AssignmentComponent,
     NavigationComponent,
-    ValidatorComponent
+    ValidatorComponent,
+    QuestionMarkerDirective
   ],
   imports: [
     BrowserModule,

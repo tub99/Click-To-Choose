@@ -1,17 +1,23 @@
-.text-row-choose{
-    border: 2px solid #0292d1;
-    background-color: #fff;
-    border-radius: 5px;
-    height: 40px;
-    margin-top: 10px;
-    text-align: center;
-    padding: 5px 0;
-    min-height: 160px;
-    display: table;
-    width: 50%;
-    vertical-align: middle;
+.text-row-choose {
+  border: 2px solid #0292d1;
+  background-color: #fff;
+  border-radius: 5px;
+  height: 40px;
+  margin-top: 10px;
+  text-align: center;
+  padding: 5px 0;
+  min-height: 160px;
+  display: table;
+  width: 50%;
+  vertical-align: middle;
 }
 
-.text-center{
-    margin: auto;
+.text-center {
+  margin: auto;
+}
+
+.underline {
+  color: red;
+  border: 1px solid red;
+  text-decoration: underline;
 }

@@ -1,0 +1,36 @@
+.btn-row{
+    text-align:center;
+    padding:40px 0 25px 0;
+}
+
+.btn:hover{
+    background:#076da8;
+}
+
+.btn{
+    width:175px;
+    height:35px;
+    background-color:#005a8a;
+    border-radius:20px;
+    border:none;
+    color:#fff;
+    text-align:left;
+    font-size:18px;
+    font-weight:300;
+    margin:0 27px;
+    cursor:pointer;
+}
+.check{
+    width: 66px;
+    height: 20px;
+    background: #02588a;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 11px;
+    padding: 4px;
+    border-radius: 3px;
+}
+.check:hover{
+    background:#076da8;
+}

@@ -19,7 +19,7 @@ export class AnswerComponent implements OnInit {
     eventManager.on('check-answers', (event) => {
       if (this.option.isAnswered && this.option.isCorrect) {
         this.renderer.addClass(this.answerInput.nativeElement, 'correct-answer');
-      } else if(this.option.isAnswered && !this.option.isCorrect) {
+      } else if (this.option.isAnswered && !this.option.isCorrect) {
         this.renderer.addClass(this.answerInput.nativeElement, 'wrong-answer')
       }
       console.log('hello', event.data);
@@ -27,6 +27,7 @@ export class AnswerComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('onInit');
   }
 
   // ngOnChanges(changes) {
@@ -34,9 +35,10 @@ export class AnswerComponent implements OnInit {
   // }
 
   isCorrect(option) {
-    //this.isOptionClicked.emit(answerInput);
     option.isAnswered = true;
+    this.isOptionClicked.emit(option);
 
+    //this.eventManager.broadcast('enable-check');
 
   }
 }

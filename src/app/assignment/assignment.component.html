@@ -11,7 +11,7 @@
   <div class="main-wrapper move-center">
     <app-answer *ngFor="let option of currentQuestion.options" [option]="option" (isOptionClicked)="isOptionClicked($event)">
     </app-answer>
-    <app-validator [options]="options"></app-validator>
+    <app-validator [options]="options" [enableCheck]=[hasOptionBeenClicked]></app-validator>
     <app-navigation [currQNo]="currentQuestionIndex+1" [noOfQuestions]="assignmentQuestions.length" [isFirstQ]="isFirstQuestion"
       [isLastQ]="isLastQuestion" (onNext)="onNextQuestionClick()" (onPrev)="onPrevQuestionClick()">
     </app-navigation>

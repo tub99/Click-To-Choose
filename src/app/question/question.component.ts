@@ -7,9 +7,12 @@ import { Question } from './../models/question';
 })
 export class QuestionComponent implements OnInit, OnChanges {
   @Input() currQuestion: Question;
-  constructor() { }
+  constructor() {
+    console.log('Q constructor fired');
+  }
 
   ngOnInit() {
+    console.log('Question onitt fired');
   }
   ngOnChanges(changes) {
     this.currQuestion = changes.currQuestion.currentValue;
