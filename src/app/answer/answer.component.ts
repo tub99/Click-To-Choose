@@ -17,13 +17,26 @@ export class AnswerComponent implements OnInit {
     private eventManager: EventManager) {
 
     eventManager.on('check-answers', (event) => {
-      if (this.option.isAnswered && this.option.isCorrect) {
-        this.renderer.addClass(this.answerInput.nativeElement, 'correct-answer');
-      } else if (this.option.isAnswered && !this.option.isCorrect) {
-        this.renderer.addClass(this.answerInput.nativeElement, 'wrong-answer')
+      if (event.attempt % 2 === 1) {
+        this.checkOnFirstAttemt(this.option, this.answerInput.nativeElement)
+      } else if (event.attempt % 2 === 0) {
+        this.checkOnSecondAttempt(this.option, this.answerInput.nativeElement)
       }
-      console.log('hello', event.data);
     });
+  }
+  private checkOnFirstAttemt(option, el) {
+    if (this.option.isAnswered && this.option.isCorrect) {
+      this.renderer.addClass(el, 'correct-answer');
+    } else if (this.option.isAnswered && !this.option.isCorrect) {
+      this.renderer.addClass(el, 'wrong-answer')
+    }
+  }
+  private checkOnSecondAttempt(option, el) {
+    let answerClass = (option.isCorrect) ? 'correct-answer' : 'wrong-answer';
+    this.renderer.addClass(el, answerClass);
+    option.toExecute = false;
+    this.isOptionClicked.emit(option);
+
   }
 
   ngOnInit() {
@@ -35,7 +48,14 @@ export class AnswerComponent implements OnInit {
   // }
 
   isCorrect(option) {
-    option.isAnswered = true;
+    if (!option.isAnswered) {
+      option.isAnswered = true;
+      option.toExecute = true;
+    } else {
+      this.renderer.removeClass(this.answerInput.nativeElement, 'correct-answer');
+      option.isAnswered = false;
+    }
+
     this.isOptionClicked.emit(option);
 
     //this.eventManager.broadcast('enable-check');

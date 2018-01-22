@@ -9,16 +9,23 @@ import { EventManager } from './../services/eventManager/eventManager.service';
 })
 export class ValidatorComponent implements OnInit, OnChanges {
   @Input() options: Array<Option>;
-  @Input() enableCheck: Boolean = false;;
+  @Input() enableCheck: Boolean = false;
+  userAttempt: number = 0;
   constructor(private eventManager: EventManager) { }
 
   ngOnInit() {
   }
   ngOnChanges(changes) {
     this.enableCheck = changes.enableCheck.currentValue[0];
+    if (changes.options) {
+      this.options = changes.options.currentValue;
+      this.userAttempt = 0;
+    }
   }
   validateAnswers() {
-    this.eventManager.broadcast('check-answers');
+    this.eventManager.broadcast('check-answers', {
+      attempt: ++this.userAttempt
+    });
   }
 
 
