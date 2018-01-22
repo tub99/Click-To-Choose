@@ -1,2 +1,6 @@
-<button type="button" class="btn btn-default">Back</button>
-<button type="button" class="btn btn-default">Next</button>
+<footer class="footer-nav container">
+    <button type="button" class="btn prev" [disabled]="isFirstQ" (click)=" !isFirstQ && OnPrevButtonClick()"><strong class="fa fa-angle-double-left" aria-hidden="true"></strong> PREVIOUS</button>
+    <span> {{currQNo}} of {{noOfQuestions}} </span>
+
+    <button type="button" class="btn next" [disabled]="isLastQ" (click)=" !isLastQ && OnNextButtonClick()">NEXT <strong class="fa fa-angle-double-right" aria-hidden="true"></strong></button>
+</footer>

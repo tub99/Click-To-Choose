@@ -8,6 +8,8 @@ import { QuestionComponent } from './question/question.component';
 import { AnswerComponent } from './answer/answer.component';
 import { AssignmentComponent } from './assignment/assignment.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { ValidatorComponent } from './validator/validator.component';
+import {EventManager} from './services/eventManager/eventManager.service';
 
 
 @NgModule({
@@ -16,14 +18,17 @@ import { NavigationComponent } from './navigation/navigation.component';
     QuestionComponent,
     AnswerComponent,
     AssignmentComponent,
-    NavigationComponent
+    NavigationComponent,
+    ValidatorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [DataHandler],
+  providers: [DataHandler,
+  EventManager
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

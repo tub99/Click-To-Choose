@@ -1,5 +1,9 @@
-<li class="option list-group-item text-center">
-  <label>
-    <input class="btn btn-default" id="{{option.id}}" type="button" value="{{option.optName}}" (click)="isCorrect($event, option)"/>
-  </label>
-</li>
+<!--<li class="option list-group-item text-center">-->
+<!--<label>-->
+<!--<input class="btn btn-default" id="{{option.id}}" type="button" value="{{option.optName}}"
+    #answerInput (click)="isCorrect(option, answerInput)"/>-->
+<div class="option center-block" [ngClass]="{ 'is-answered': option.isAnswered === true }" id="{{option.id}}" #answerInput (click)="isCorrect(option, answerInput)">
+  {{option.optName}}
+</div>
+<!--</label>-->
+<!--</li>-->

@@ -8,6 +8,10 @@ export const config = {
   },
   ERROR: {
     ASSIGNMENT_TYPE_NOT_FOUND: 'No assignments of the above type'
+  },
+  Feeback : {
+    CORRECT_ANSWER: 'Awesome! Correct Answer',
+    WRONG_ANSWER: 'Incorrect! Please try again'
   }
 
 };

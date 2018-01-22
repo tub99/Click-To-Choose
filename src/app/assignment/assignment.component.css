@@ -9,3 +9,7 @@
 .main-wrapper {
   width:50%;
 }
+
+.correct-answer{
+  border: 3px solid green;
+}

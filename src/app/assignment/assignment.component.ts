@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Renderer2, ElementRef } from '@angular/core';
 import { AssignmentService } from './../services/assignment/assignment.service';
 import { Assignment } from './../models/assignment';
 import { Question } from './../models/question';
@@ -18,8 +18,11 @@ export class AssignmentComponent implements OnInit {
   assignmentQuestions: Array<Question>;
   currentQuestion: Question;
   currentQuestionIndex: number = 0;
+  isFirstQuestion: Boolean = true;
+  isLastQuestion: Boolean = false;
+  options:Array<Option>;
 
-  constructor(private assignemntSvc: AssignmentService) { }
+  constructor(private assignemntSvc: AssignmentService, private  renderer: Renderer2, private el: ElementRef) { }
 
   ngOnInit() {
     this.assignemntSvc.getAssignmentAccToType(config.DATA.URl, config.ASSIGNMENT_TYPE.SUBJECT_PREDICATE)
@@ -27,14 +30,32 @@ export class AssignmentComponent implements OnInit {
         this.assignmentData = data;
         this.assignmentQuestions = data.questions
         this.assignmentName = data.name;
-        this.currentQuestion = data.questions[this.currentQuestionIndex]
+        this.currentQuestion = data.questions[this.currentQuestionIndex];
+        this.options = this.currentQuestion.options;
       },
       err => {
         alert(err);
       });
   }
   isOptionClicked(option) {
-    alert(option.isCorrect === true)
+    alert(option.isCorrect === true);
+    this.renderer.addClass(this.el.nativeElement, 'correct-answer');
+
+  }
+
+  onNextQuestionClick() {
+    if (this.currentQuestionIndex < this.assignmentQuestions.length - 1) {
+      if (this.isFirstQuestion) this.isFirstQuestion = false;
+      this.currentQuestion = this.assignmentData.questions[++this.currentQuestionIndex];
+      this.isLastQuestion = (this.currentQuestionIndex === this.assignmentQuestions.length - 1) ? true : false;
+    }
+  }
+  onPrevQuestionClick() {
+    if (this.currentQuestionIndex > 0) {
+      if (this.isLastQuestion) this.isLastQuestion = false;
+      this.currentQuestion = this.assignmentData.questions[--this.currentQuestionIndex];
+      this.isFirstQuestion = (this.currentQuestionIndex === 0) ? true : false;
+    }
   }
 
 }
