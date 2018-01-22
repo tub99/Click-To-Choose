@@ -18,6 +18,7 @@ export class ValidatorComponent implements OnInit, OnChanges {
     this.enableCheck = changes.enableCheck.currentValue[0];
   }
   validateAnswers() {
+    this.eventManager.broadcast('check-answers');
   }
 
 
